@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:attributeGroup name="modifiers">
+    <xs:attribute name="isFinal" type="xs:boolean" default="false" />
+    <xs:attribute name="isStatic" type="xs:boolean" default="false"/>
+    <xs:attribute name="isAbstract" type="xs:boolean" default="false"/>
+  </xs:attributeGroup>
+  
+  <xs:simpleType name="access">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="public" />
+      <xs:enumeration value="protected" />
+      <xs:enumeration value="private" />
+      <xs:enumeration value="package" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:group name="inputParameter">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="type" type="xs:string" />
+    </xs:sequence>
+  </xs:group>
+
+  <xs:complexType name="inputlist">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="input" type="xs:string" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="inputs" type="inputlist" />
+  <xs:complexType name="funcInput">
+    <xs:sequence>
+      <xs:element name="func" type="xs:string" />
+      <xs:element ref="inputs" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="functionInput" type="funcInput" />
+  <xs:complexType name="funcInputs">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="functionInput" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="functionInputs" type="funcInputs" />
+  
+    <xs:complexType name="field">
+    <xs:sequence>
+      <xs:group ref="inputParameter" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="defaultValue" type="funcInputs"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="visibility" type="access"/>
+    <xs:attributeGroup ref="modifiers" />
+  </xs:complexType>
+  
+  <xs:element name="field" type="field" />
+  
+  <xs:complexType name="labels">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="label" type="xs:string" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="lineLabels" type="labels" />
+  <xs:complexType name="method_line">
+    <xs:sequence>
+      <xs:element name="function" type="xs:string" />
+      <xs:element name="outputVariable" type="xs:string" />
+      <xs:element ref="functionInputs" />
+      <xs:element name="lineNumber" type="xs:int" default="-1"/>
+      <xs:element ref="lineLabels" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="methodLine" type="method_line" />
+  <xs:complexType name="fieldlist">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="field" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="fields" type="fieldlist" />
+  <xs:complexType name="annotationlist">
+  	<xs:choice minOccurs="0" maxOccurs="unbounded">
+  		<xs:element ref="functionInput"/>
+  	</xs:choice>
+  </xs:complexType>
+  <xs:element name="annotations" type="annotationlist"/>
+  <xs:complexType name="methodlinelist">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="methodLine" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="methodLines" type="methodlinelist" />
+  <xs:complexType name="_methodinput">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="type" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="methodInput" type="_methodinput" />
+  <xs:complexType name="methodinputlist">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="methodInput" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="methodInputs" type="methodinputlist" />
+  <xs:complexType name="_exception">
+  	<xs:choice minOccurs="0" maxOccurs="unbounded">
+  		<xs:element name="exception" type="xs:string"/>
+  	</xs:choice>
+  </xs:complexType>
+  <xs:element name="exceptions" type="_exception"/>
+  <xs:complexType name="_method">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element name="outputType" type="xs:string" />
+      <xs:element ref="methodInputs" />
+      <xs:element ref="methodLines" />
+      <xs:element ref="annotations" />
+      <xs:element ref="exceptions"/>
+    </xs:sequence>
+    <xs:attribute name="isStrictOrder" type="xs:boolean" />
+    <xs:attribute name="visibility" type="access" />
+    <xs:attributeGroup ref="modifiers" />
+  </xs:complexType>
+  <xs:element name="method" type="_method" />
+  <xs:complexType name="methodlist">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="method" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="methods" type="methodlist" />
+  <xs:complexType name="namelist">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="name" type="xs:string" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="extends" type="namelist" />
+  <xs:element name="implements" type="namelist" />
+  <xs:complexType name="layout">
+    <xs:sequence>
+      <xs:element name="x" type="xs:double" />
+      <xs:element name="y" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="position" type="layout" />
+  <xs:complexType name="_class">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element ref="extends" />
+      <xs:element ref="implements" />
+      <xs:element ref="fields" />
+      <xs:element ref="methods" />
+      <xs:element ref="position" />
+    </xs:sequence>
+    <xs:attribute name="isInitialize" type="xs:boolean"/>
+    <xs:attribute name="isInterface" type="xs:boolean" />
+    <xs:attribute name="isEnum" type="xs:boolean" />
+    <xs:attribute name="visibility" type="access" />
+    <xs:attributeGroup ref="modifiers" />
+  </xs:complexType>
+  <xs:element name="class" type="_class" />
+  <xs:complexType name="classlist">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="class" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="classes" type="classlist" />
+  <xs:complexType name="_package">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string" />
+      <xs:element ref="position" />
+    </xs:sequence>
+    <xs:attribute name="isInitialize" type="xs:boolean"/>
+  </xs:complexType>
+  <xs:element name="package" type="_package" />
+  <xs:complexType name="packagelist">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="package" />
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="packages" type="packagelist" />
+  <xs:complexType name="_project">
+    <xs:sequence>
+      <xs:element ref="packages" />
+      <xs:element ref="classes" />
+    </xs:sequence>
+	<xs:attribute name="name" type="xs:string"/>
+  </xs:complexType>
+  <xs:element name="project" type="_project" />
+</xs:schema>
