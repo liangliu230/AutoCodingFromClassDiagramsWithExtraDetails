@@ -3,18 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Model/Model/ACClass.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Controller/WithFunctionDiscriptionAndTwoLinkToLabel.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Controller/BranchFlowChartButton.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Controller/Controller.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Controller/OnlyLinkToLabel.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Controller/SequencialFlowChartButton.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Controller/WithFunctionDiscriptionAndLinkToLabel.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Model/Model/FullName.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/FileGeneration/Java/FunctionStaticStrings.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/View/ClassControl.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/Controller/FlowChartPane.java</file>
-            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/AutoCodingFromClassDiagramWithExtraDetails/src/autocodingfromclassdiagramswithextradetails/AutoCodingFromClassDiagramsWithExtraDetails.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/src/Controller/FlatGraph.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/test/Example2/EXAMPLE2.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/src/View/MethodDialogContent.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/src/View/FlowChartNodeDialogContent.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/src/View/ClassDialogContent.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/src/Controller/SortNodeInFlowChartGraph.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/src/Translation/TranslateToJava.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/src/Controller/Controller.java</file>
+            <file>file:/C:/Users/Liu/Documents/NetBeansProjects/ACCDEDmilestone1/src/View/FlowChartDialogContent.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,18 +1,18 @@
-ÔªøReadme
+Readme
 
 Project name: Automatic Coding from Class Diagrams with Extra Details
 
 Author: Liang Liu
 
-Current Version: Concept Demo 1
+Current Version: Working Prototype 1
 
-1. Disclaim
+1. Declaration
 
 This software is licensed under MIT license.
 
 This software is only used to demonstrate my idea on creating computer programs in complete graphical user interface which using class diagrams of UML to represent the project organization and using flow chart to represent the method body. 
 
-This software is not complete. I completed two parts: user interface and model structures. I did not connect these two parts. It is because I think there are better ways to do both parts. However, I believe my intention can be represented in current version.
+This software is in working prototype statues. The basic functions are all workings. The user can create, save and load projects, and can translate current project into java. However, the author did not implement some of the important functions like delete classes or flow chart nodes. There are also user experience and performance problems exists.
 
 2. Project Purpose
 
@@ -28,14 +28,48 @@ One software is notable. It is Drakon. The details of it are on Wikipedia. The r
 
 4. A Simple Description
 
-In current version, Buttons are used to represent class diagrams (on main interface after create a new project) and flow chart nodes (in flow chart dialog interface, accessible from the button with name ‚Äúcreate method body‚Äù in method creation dialog). 
+There are four buttons on the toolbar. New project is used to create new project, save project save the current displaying project into the file selected by the user. The file format is in xml, and only this format is accepted. Load project load saved project into main screen. Translate project translate the displaying project in to java with default folder "./test/".
 
-A class diagram node can be created through right mouse button menu item "Add class object" at the tree view section on the left of the main interface, it can be modified through class modify dialog by click on it (it is a button control). 
+After created a new project or loaded a project, the project/package/class name can be modified at the left tree view. Additional package and class can be added through context menu by right click on desired tree item.
 
-Flow charts interface can be created in the process of creating a method. There are three flow chart node types: sequential, branch and loop. Two nodes are created at the beginning of the flow chart interface, they are start node, which marks the beginning of the flow chart, and the end node, which marks the end of the flow chart. Every flow chart nodes have unique labels, and can be connected to other nodes by choosing link to labels in node modification dialog (a click on the node). Each flow chart node have at least one link to label (except end node). Sequential and loop nodes have only one link to label, branch nodes have two link to labels (true branch and false branch, switch is not implemented). In this project, for, for each, while, and do-while are in the loop type. On their creation, there will be two nodes created on the interface. One for the loop condition declaration and one for marking its end (this is just like the Drakon). If, switch are considered as branch nodes. As sequential nodes, there will be only one flow chart nodes created. Flow chart nodes are created by click three buttons on the interface. Sequence button creates sequential nodes, branch button creates branch nodes and loop button create loop nodes.
+After a class object(can be interface, enum and class) is added, there will be a new button displayed on the area at right to the tree view. Left click the button will bring up the class dialog. In which, all information about this class object can be modified. Click the add button in field list section will add new fields to the class object. Method can be added though the same way. 
 
-Other functions like save and load is not implemented. Translate is implemented but not useable as no method body is savable from flow chart created. 
+Method body of a method can be added through the method dialog. This dialog is opened by click the method button in the method list. In this dialog, there is a button named ìCreate method bodyî at the button. Click it will bring up the flow chart dialog. In the flow chart dialog, the method body can be created and be saved.
+
+The organization of the interface can be seen below:
+
+Main Interface
+|
+- - Tool Bar ñ New project
+             - Save project
+             - Load project
+             - Translate project
+|
+- - Tree View ñ Create and change project/package/class object names
+|
+- - Main Pane 
+     |ñ Class objects displayed as buttons
+        |
+        - - Class dialog ñ input information about current class
+             |
+             - - Field dialog ñ input information about current field
+             |
+             - - Method dialog ñ input information about current method
+                  |
+                  - - Flow Chart dialog
+                       |
+                       - - Flow Chart Node dialog
+
+In the current version, flow chart nodes are categorized by whether its translated line need brackets to keep the correct operate of the translate program. There are four types of nodes, 1. Start and end nodes of flow chart. They represent the start point and end point of a flow chart. They will not appear in final translated program. 2. Sequence nodes. These nodes can be carried sequentially and donít need brackets in translated programs. 3. Branch nodes. They need brackets to denote its boundary. This type of nodes includes: if, switch and try. 4. Loop nodes. Unlike branch nodes, loop nodes are appeared in pairs. The first node represents the loop conditions and the start of the loop, and the second node represents the end of the loop. This design is used because unlike branch nodes, the end of a loop is not obvious, that is, in the graph, the end of the loop only have one in edge, which cannot denote the loop is end. Unlike the situation in branch nodes where two or more in edges can be found in the node after the branch block. For example, the if node will always be a node which will receive its true clause branch and false clause branch. The same design can also be found in Drakon.
+            
+Function content in flow chart node dialog is a reused name. In this project, some key words like if, for, switch are seen as functions. Therefore, function content is used to represent their inputs like normal function calls. Some of the key words like break, continue and default do not need inputs. Other the type for normal lines which usually consist of output type, output variable name, and the function used (include the function inputs). This type is considered as sequence type of node.
+
+On the first running, a file named ìjava.xmlî will be created at ì./î. This file stores information of rt.jar (a part, packages started with java and javax) and jfxrt.jar and is used for hint generation. The generation of this file will require one or two minutes.
+
+At each new project creation or project loading, the hint generator needs to be initialized. This process will read ìjava.xmlî and will cost about one minute.
 
 5. Working Environment
 
 The GUI is created with JavaFX. The JavaSE version used is 8u66. 
+
+ 

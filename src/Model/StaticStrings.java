@@ -32,9 +32,8 @@ public class StaticStrings
     public static final String Name = "name";
     public static final String Type = "type";
     
-    public static final String Function = "function";
-    public static final String Inputs = "inputs";
-    public static final String Input = "input";
+    public static final String FunctionType = "functionType";
+    public static final String FunctionContent = "functionContent";
     
     public static final String FunctionInput = "functionInput";
     public static final String FunctionInputs = "functionInputs";
@@ -44,7 +43,6 @@ public class StaticStrings
 
     public static final String Visibility = "visibility";
     
-    public static final String LineNumber = "lineNumber";
     public static final String LineLabel = "label";
     public static final String LineLabels = "lineLabels";
     
@@ -59,8 +57,10 @@ public class StaticStrings
     public static final String MethodInputs = "methodInputs";
     
     public static final String InputParameters = "inputParameters";
+    public static final String InputParameter = "inputParameter";
     
     public static final String Annotations = "annotations";
+    public static final String Annotation = "annotation";
     
     public static final String Field = "field";
     public static final String Fields = "fields";
@@ -100,7 +100,9 @@ public class StaticStrings
     public static final String Enum = "enum";
     public static final String Interface = "interface";
     public static final String Class = "class";
+    public static final String IsThrowExceptions = "isThrowExceptions";
     public static final String Throws = "throws";
+    public static final String Exception = "Exception";
     
     public static final String LabelBeforeFirstLine = "LABELBEFOREFIRSTLINE";
     public static final String LabelAfterLastLine = "LABELAFTERLASTLINE";
